@@ -1,0 +1,49 @@
+{
+  "title": "Ctrl+CapsLock as CapsLock",
+  "rules": [
+    {
+      "description": "Use Ctrl+CapsLock as CapsLock",
+      "manipulators": [
+        {
+					"type": "basic",
+					"from": {
+						"key_code": "caps_lock",
+						"modifiers": {
+							"mandatory": [
+								"right_control"
+							],
+              "optional": [
+                "caps_lock"
+              ]
+						}
+					},
+					"to": [
+						{
+							"key_code": "caps_lock"
+						}
+					]
+				},
+{
+					"type": "basic",
+					"from": {
+						"key_code": "caps_lock",
+						"modifiers": {
+							"mandatory": [
+								"left_control"
+							],
+              "optional": [
+                "caps_lock"
+              ]
+						}
+					},
+					"to": [
+						{
+							"key_code": "caps_lock"
+						}
+					]
+				}
+			]
+		}
+	]
+}
+

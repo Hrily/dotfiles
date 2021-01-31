@@ -1,0 +1,18 @@
+# get abs path for dir of the file
+dir=$(cd "$(dirname "$1")"; pwd)/
+# ignore first param
+shift
+# iterate
+for file in "$@"
+do
+	look=$dir
+	while [[ -n $look ]]; do
+		[[ -e $look/$file ]] && {
+			printf '%s\n' "$look"
+			exit
+		}
+		look=${look%/*}
+	done
+	[[ -e /$file ]] && echo /
+done
+exit 1
