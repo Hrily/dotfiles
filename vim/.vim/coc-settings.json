@@ -1,11 +1,14 @@
 {
-  "languageserver": {
-    "golang": {
-      "command": "/Users/hrishi/gocode/bin/gopls",
+	"languageserver": {
+		"golang": {
+			"command": "/Users/hrishi/gocode/bin/gopls",
 			"args": ["-remote", "auto"],
-      "rootPatterns": [".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"]
-    }
-  },
-  "coc.preferences.extensionUpdateCheck": "daily"
+			"rootPatterns": [".vim/", ".git/", ".hg/"],
+			"filetypes": ["go"]
+		}
+	},
+	"coc.preferences.extensionUpdateCheck": "daily",
+		"go.disable": {
+			"workspaceFolder": true
+		}
 }

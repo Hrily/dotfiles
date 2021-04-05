@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PHEONIX=/Users/hrishikeshhiraskar/scripts/exploit-education-phoenix-amd64
+PHEONIX=/Users/hrishi/scripts/exploit-education-phoenix-amd64
 
 exec qemu-system-x86_64 \
   -kernel $PHEONIX/vmlinuz-4.9.0-8-amd64 \
