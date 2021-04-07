@@ -3,7 +3,7 @@
 		"golang": {
 			"command": "/Users/hrishi/gocode/bin/gopls",
 			"args": ["-remote", "auto"],
-			"rootPatterns": [".vim/", ".git/", ".hg/"],
+			"rootPatterns": [".vim/", ".git/", ".hg/", "go.mod"],
 			"filetypes": ["go"]
 		}
 	},
