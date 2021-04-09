@@ -1,0 +1,10 @@
+{
+    "screens": 2,
+    "mod1": [
+        "option",
+    ],
+    "mod2": [
+        "option",
+        "shift",
+    ]
+}
