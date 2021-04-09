@@ -5,21 +5,13 @@ IFS=$'\n'      # Change IFS to new line
 branches=($branches) # split to array $names
 IFS=$SAVEIFS   # Restore IFS
 
+if [ "${#branches[@]}" -eq "0" ]; then
+	exit $$
+fi
+
 if [ "${#branches[@]}" -eq "1" ]; then
 	git checkout ${branches[0]}
 	exit $$
 fi
 
-echo "Select branch:"
-for index in "${!branches[@]}"
-do
-	echo "    " $((index + 1)) ${branches[index]}
-done
-
-printf ": "
-
-read -r INPUT
-INPUT=$((INPUT - 1))
-branch=${branches[INPUT]}
-
-git checkout $branch
+git checkout $(git branch | fzf --height 40%)
