@@ -26,6 +26,9 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" Use <cr> to confirm completion
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
 " Use <c-space> to trigger completion.
 " <c-space> is mapped to <F2> in iterm2
 imap <silent><expr> <F2> coc#refresh()

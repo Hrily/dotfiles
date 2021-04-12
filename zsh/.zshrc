@@ -5,15 +5,12 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Use bash_profile
-source ~/.bash_profile
-
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:$PATH
 export PATH="/usr/local/opt/curl/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/hrishi/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -89,7 +86,7 @@ SPACESHIP_USER_SHOW="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -166,10 +163,10 @@ export PATH="$HOME/yarn/yarn-v1.9.4/bin:$PATH"
 
 # Android Env vars
 # Setup environment variables
-export JAVA_HOME="$(/usr/libexec/java_home -v1.8)"
-export ANDROID_HOME=~/android-sdk
-export ANDROID_NDK=~/android-ndk
-export ANDROID_NDK_HOME=~/android-ndk
+# export JAVA_HOME="$(/usr/libexec/java_home -v1.8)"
+# export ANDROID_HOME=~/android-sdk
+# export ANDROID_NDK=~/android-ndk
+# export ANDROID_NDK_HOME=~/android-ndk
 
 # Add env vars to PATH
 export PATH=$JAVA_HOME/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$PATH
@@ -177,14 +174,15 @@ export PATH=$JAVA_HOME/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_H
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# zsh-syntax-highlight, should be at the end
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 
+# Add GOPATH/bin to path
+export GOPATH="$(go env GOPATH)"
+export PATH="$PATH:$GOPATH/bin"
+
 # Enable direnv
-eval "$(direnv hook $SHELL)"
+# eval "$(direnv hook $SHELL)"
 
 # VI mode
 bindkey -v

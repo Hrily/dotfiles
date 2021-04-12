@@ -1,12 +1,19 @@
 {
 	"languageserver": {
 		"golang": {
-			"command": "/Users/hrishi/gocode/bin/gopls",
+			"command": "gopls",
 			"args": ["-remote", "auto"],
 			"rootPatterns": [".vim/", ".git/", ".hg/", "go.mod"],
 			"filetypes": ["go"]
 		}
 	},
+	"coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "javascript.jsx",
+    "json",
+    "typescript",
+    "typescript.tsx"
+  ],
 	"coc.preferences.extensionUpdateCheck": "daily",
 		"go.disable": {
 			"workspaceFolder": true

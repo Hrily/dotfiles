@@ -291,7 +291,7 @@ let g:go_highlight_types = 1
 let g:go_highlight_function_calls = 1
 let g:go_auto_type_info = 1
 let g:go_addtags_transform = "snakecase"
-let g:go_bin_path = expand($HOME) . "/gocode/bin"
+let g:go_bin_path = trim(system('go env GOPATH')) . "/bin"
 " Lint on save
 let g:go_metalinter_autosave = 0
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
