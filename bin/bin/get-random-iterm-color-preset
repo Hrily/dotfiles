@@ -1,0 +1,19 @@
+THEMES_DIR=$HOME/.config/iterm2themes
+
+CURRENT_THEME=$1
+
+THEMES=$(ls $THEMES_DIR/*.itermcolors | xargs -n1 -I {} basename {} .itermcolors)
+
+if [ -n "$CURRENT_THEME" ]; then
+	THEMES=$(echo $THEMES | tr ' ' '\n' | grep -wv $CURRENT_THEME)
+fi
+
+# Convert to array
+THEMES=($THEMES)
+LEN_THEMES=${#THEMES[@]}
+
+i=$(($RANDOM % $LEN_THEMES))
+
+RANDOM_THEME=${THEMES[$i]}
+
+echo $RANDOM_THEME

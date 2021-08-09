@@ -1,21 +1,24 @@
 {
-	"languageserver": {
-		"golang": {
-			"command": "gopls",
-			"args": ["-remote", "auto"],
-			"rootPatterns": [".vim/", ".git/", ".hg/", "go.mod"],
-			"filetypes": ["go"]
-		}
-	},
-	"coc.preferences.formatOnSaveFiletypes": [
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "args": ["-remote", "auto"],
+      "rootPatterns": [".vim/", ".git/", ".hg/", "go.mod"],
+      "filetypes": ["go"]
+    }
+  },
+  "go.disable": {
+    "workspaceFolder": true
+  },
+  "coc.preferences.formatOnSaveFiletypes": [
+    "json",
     "javascript",
     "javascript.jsx",
-    "json",
     "typescript",
-    "typescript.tsx"
-  ],
-	"coc.preferences.extensionUpdateCheck": "daily",
-		"go.disable": {
-			"workspaceFolder": true
-		}
+    "typescript.tsx",
+    "typescriptreact",
+    "css",
+    "scss"
+  ]
 }

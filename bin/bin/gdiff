@@ -1,0 +1,1 @@
+git diff "$@" | git-split-diffs --color | less -RFX

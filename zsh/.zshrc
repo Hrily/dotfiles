@@ -103,6 +103,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='vim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -112,16 +113,17 @@ setopt noEXTENDED_GLOB
 
 # Editor
 # If parent process is vim, set editor to floaterm
-parent_command=$(ps -p $PPID -o comm | tail -n1)
-if [[ "$parent_command" == "vim" ]]; then
-	alias vim="floaterm"
-	export EDITOR='floaterm'
-	export GIT_EDITOR='floaterm'
-else
-	export EDITOR='vim'
-fi
+# parent_command=$(ps -p $PPID -o comm | tail -n1)
+# if [[ "$parent_command" == "vim" ]]; then
+# 	alias vim="floaterm"
+# 	export EDITOR='floaterm'
+# 	export GIT_EDITOR='floaterm'
+# else
+# 	export EDITOR='vim'
+# fi
 
 # The Fuck
+alias python="python3"
 eval $(thefuck --alias)
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -159,8 +161,6 @@ export NVM_DIR="$HOME/.nvm"
 # yarn v1.9.4
 export PATH="$HOME/yarn/yarn-v1.9.4/bin:$PATH"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # Android Env vars
 # Setup environment variables
 # export JAVA_HOME="$(/usr/libexec/java_home -v1.8)"
@@ -196,3 +196,6 @@ bindkey '^[OA' history-beginning-search-backward-end
 bindkey '^[OB' history-beginning-search-forward-end
 bindkey -M vicmd 'k' history-beginning-search-backward-end
 bindkey -M vicmd 'j' history-beginning-search-forward-end
+
+# FZF
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

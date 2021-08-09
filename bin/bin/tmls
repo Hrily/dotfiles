@@ -1,0 +1,18 @@
+sessions=`tmux ls`
+
+SAVEIFS=$IFS   # Save current IFS
+IFS=$'\n'      # Change IFS to new line
+sessions=($sessions) # split to array $names
+IFS=$SAVEIFS   # Restore IFS
+
+if [ "${#sessions[@]}" -eq "0" ]; then
+	tmux
+	exit
+fi
+
+if [ "${#sessions[@]}" -eq "1" ]; then
+	tmux a -t $(echo ${sessions[0]} | cut -d ':' -f1)
+	exit
+fi
+
+tmux a -t $(tmux ls | fzf --height 40% | cut -d ":" -f 1)

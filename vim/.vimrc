@@ -193,9 +193,16 @@ let $USE_SYSTEM_GO=1
 " Support backspace
 set backspace=indent,eol,start
 
-" Highligh trailing whitespacee
-hi ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
+" Remove trailing whitespaces
+function! <SID>StripTrailingWhitespacesFn()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+command StripTrailingWhitespaces :call StripTrailingWhitespacesFn()
+" Remove trailing whitespaces on save
+autocmd BufWritePre * :call <SID>StripTrailingWhitespacesFn()
 
 " Show whitespaces as characters
 set listchars=eol:¬,tab:\¦\ ,trail:~,extends:>,precedes:<,space:·
@@ -343,7 +350,7 @@ Plug 'junegunn/goyo.vim'
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_COMMAND='ag --hidden --ignore={".git","pkg","*.o","*.swp","*.swo"} -g "" -U'
+let $FZF_DEFAULT_COMMAND='ag --hidden --ignore={".git","pkg","*.o","*.swp","*.swo","node_modules"} -g "" -U'
 nmap <leader>p :Files<CR>
 nmap <leader>P :GFiles<CR>
 nmap <leader>f :Files %:h<CR>
@@ -355,7 +362,7 @@ fun! FindGoProjectRoot()
 	if exists('b:goprojectroot')
 		return b:goprojectroot
 	endif
-	let l:cmd = 'findup ' . expand("%:h") . ' main.go METADATA .git'
+	let l:cmd = 'findup ' . expand("%:h") . ' go.mod main.go METADATA .git'
 	echo l:cmd
 	silent let l:roots = systemlist(l:cmd)
 	if len(l:roots) == 0
@@ -457,6 +464,16 @@ Plug 'ledesmablt/vim-run'
 Plug 'szw/vim-maximizer'
 nmap <leader>Z :MaximizerToggle!<CR>
 
+" Colors
+Plug 'ap/vim-css-color'
+
+" Magit
+Plug 'jreybert/vimagit'
+
+" .tsx and .jsx syntax highlight
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
 " Initialize plugin system
 call plug#end()
 
@@ -465,3 +482,10 @@ hi Comment cterm=italic ctermfg=8
 
 " Color column
 match OverLength /\%81v./
+
+" Highligh trailing whitespacee
+hi ExtraWhitespace ctermbg=red
+match ExtraWhitespace /\s\+$/
+
+" Hide ~ in sign column for empty lines
+hi NonText ctermfg=0

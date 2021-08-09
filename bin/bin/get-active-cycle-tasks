@@ -1,0 +1,13 @@
+API_KEY=$(gpg --passphrase -q --no-symkey-cache -d ~/.secrets/linear.gpg)
+curl -s 'https://api.linear.app/graphql' \
+	-H 'Content-Type: application/json' \
+	-H 'Accept: application/json' \
+	-H 'Connection: keep-alive' \
+	-H 'DNT: 1' \
+	-H 'Origin: http://localhost:8080' \
+	-H 'Authorization: '"$API_KEY" \
+  --data-binary '{"query":"query {\n  team(id: \"0f955011-b927-430a-b51d-905faf353fa2\") {\n    id\n    name\n    activeCycle {\n      number\n      issues(\n        first: 250\n      ) {\n        nodes {\n          identifier\n          title\n          url\n          assignee {\n            displayName\n          }\n          parent {\n            id\n          }\n        }\n      }\n    }\n  }\n}\n"}' \
+  | jq -c '.data.team.activeCycle.issues.nodes[]' \
+  | grep '"displayName":"hrishi"' \
+  | grep '"parent":null' \
+  | jq -r '.url'

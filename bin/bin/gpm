@@ -1,1 +1,6 @@
-git checkout main && git pull origin main
+DEFAULT=main
+if [[ $(git branch | grep -o master) == "master" ]]; then
+	DEFAULT=master
+fi
+
+git checkout $DEFAULT && git pull
