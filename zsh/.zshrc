@@ -136,6 +136,8 @@ eval $(thefuck --alias)
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias :q="exit"
 alias fcless="fc -e - | less"
+alias v="vim"
+alias vi="vim"
 alias gomodoffvim="GO111MODULE=off vim"
 
 # Set Locale

@@ -350,7 +350,7 @@ Plug 'junegunn/goyo.vim'
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_COMMAND='ag --hidden --ignore={".git","pkg","*.o","*.swp","*.swo","node_modules"} -g "" -U'
+let $FZF_DEFAULT_COMMAND='ag --hidden --ignore={".git","pkg","*.o","*.swp","*.swo","node_modules","vendor"} -g "" -U'
 nmap <leader>p :Files<CR>
 nmap <leader>P :GFiles<CR>
 nmap <leader>f :Files %:h<CR>
@@ -473,6 +473,10 @@ Plug 'jreybert/vimagit'
 " .tsx and .jsx syntax highlight
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
+
+" nearley syntax highlighting
+" https://nearley.js.org/
+Plug 'tjvr/vim-nearley'
 
 " Initialize plugin system
 call plug#end()

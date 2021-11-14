@@ -9,14 +9,18 @@
           "from": {
             "key_code": "caps_lock",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
-              "key_code": "vk_none"
+              "set_variable": {
+                "name": "vimium",
+                "value": 1
+              }
+            },
+            {
+              "shell_command": "echo 'NORMAL' > /Users/hrishi/.config/karabiner/vimium.mode"
             }
           ],
           "to_if_alone": [
@@ -24,11 +28,41 @@
               "set_variable": {
                 "name": "vimium",
                 "value": 1
+              },
+              "halt": true
+            },
+            {
+              "shell_command": "echo 'NORMAL' > /Users/hrishi/.config/karabiner/vimium.mode",
+              "halt": true
+            }
+          ],
+          "to_if_held_down": [
+            {
+              "set_variable": {
+                "name": "vimium",
+                "value": 1
               }
             },
-						{
-							"shell_command": "echo 'NORMAL' > /Users/hrishi/.config/karabiner/vimium.mode"
-						}
+            {
+              "shell_command": "echo 'NORMAL' > /Users/hrishi/.config/karabiner/vimium.mode"
+            }
+          ],
+          "to_after_key_up": [
+            {
+              "set_variable": {
+                "name": "vimium",
+                "value": 0
+              }
+            },
+            {
+              "set_variable": {
+                "name": "vimium_visual",
+                "value": 0
+              }
+            },
+            {
+              "shell_command": "echo 'INSERT' > /Users/hrishi/.config/karabiner/vimium.mode"
+            }
           ],
           "conditions": [
             {
@@ -38,14 +72,12 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "caps_lock",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -66,9 +98,9 @@
                 "value": 0
               }
             },
-						{
-							"shell_command": "echo 'INSERT' > /Users/hrishi/.config/karabiner/vimium.mode"
-						}
+            {
+              "shell_command": "echo 'INSERT' > /Users/hrishi/.config/karabiner/vimium.mode"
+            }
           ],
           "conditions": [
             {
@@ -83,9 +115,7 @@
           "from": {
             "key_code": "escape",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -106,9 +136,7 @@
           "from": {
             "key_code": "return_or_enter",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -129,9 +157,7 @@
           "from": {
             "key_code": "i",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -147,9 +173,9 @@
                 "value": 0
               }
             },
-						{
-							"shell_command": "echo 'INSERT' > /Users/hrishi/.config/karabiner/vimium.mode"
-						}
+            {
+              "shell_command": "echo 'INSERT' > /Users/hrishi/.config/karabiner/vimium.mode"
+            }
           ],
           "conditions": [
             {
@@ -164,9 +190,7 @@
           "from": {
             "key_code": "g",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -195,9 +219,7 @@
           "from": {
             "key_code": "h",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -223,9 +245,7 @@
           "from": {
             "key_code": "j",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -251,9 +271,7 @@
           "from": {
             "key_code": "k",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -279,9 +297,7 @@
           "from": {
             "key_code": "l",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -307,12 +323,8 @@
           "from": {
             "key_code": "b",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["shift"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -338,12 +350,8 @@
           "from": {
             "key_code": "e",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["shift"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -369,12 +377,8 @@
           "from": {
             "key_code": "k",
             "modifiers": {
-              "mandatory": [
-                "control"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["control"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -395,12 +399,8 @@
           "from": {
             "key_code": "j",
             "modifiers": {
-              "mandatory": [
-                "control"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["control"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -421,12 +421,8 @@
           "from": {
             "key_code": "u",
             "modifiers": {
-              "mandatory": [
-                "control"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["control"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -509,12 +505,8 @@
           "from": {
             "key_code": "d",
             "modifiers": {
-              "mandatory": [
-                "control"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["control"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -597,17 +589,13 @@
           "from": {
             "key_code": "slash",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "f",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "vk_none"
@@ -618,9 +606,9 @@
                 "value": 0
               }
             },
-						{
-							"shell_command": "echo 'INSERT' > /Users/hrishi/.config/karabiner/vimium.mode"
-						}
+            {
+              "shell_command": "echo 'INSERT' > /Users/hrishi/.config/karabiner/vimium.mode"
+            }
           ],
           "conditions": [
             {
@@ -635,17 +623,13 @@
           "from": {
             "key_code": "n",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "g",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "to_after_key_up": [
@@ -666,21 +650,14 @@
           "from": {
             "key_code": "n",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["shift"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "g",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             }
           ],
           "to_after_key_up": [
@@ -701,21 +678,14 @@
           "from": {
             "key_code": "j",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["shift"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "tab",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
+              "modifiers": ["left_control", "left_shift"]
             }
           ],
           "to_after_key_up": [
@@ -736,20 +706,14 @@
           "from": {
             "key_code": "k",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["shift"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "tab",
-              "modifiers": [
-                "left_control"
-              ]
+              "modifiers": ["left_control"]
             }
           ],
           "to_after_key_up": [
@@ -770,21 +734,14 @@
           "from": {
             "key_code": "t",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["shift"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "tab",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
+              "modifiers": ["left_control", "left_shift"]
             },
             {
               "set_variable": {
@@ -811,17 +768,13 @@
           "from": {
             "key_code": "t",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "tab",
-              "modifiers": [
-                "left_control"
-              ]
+              "modifiers": ["left_control"]
             },
             {
               "set_variable": {
@@ -848,17 +801,13 @@
           "from": {
             "key_code": "1",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "1",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -885,25 +834,17 @@
           "from": {
             "key_code": "4",
             "modifiers": {
-              "optional": [
-                "caps_lock",
-                "shift"
-              ]
+              "optional": ["caps_lock", "shift"]
             }
           },
           "to": [
             {
               "key_code": "1",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             },
             {
               "key_code": "tab",
-              "modifiers": [
-                "left_control",
-                "left_shift"
-              ]
+              "modifiers": ["left_control", "left_shift"]
             },
             {
               "set_variable": {
@@ -930,17 +871,13 @@
           "from": {
             "key_code": "t",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "t",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "to_after_key_up": [
@@ -961,17 +898,13 @@
           "from": {
             "key_code": "r",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "r",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "to_after_key_up": [
@@ -992,17 +925,13 @@
           "from": {
             "key_code": "u",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "z",
-              "modifiers": [
-                "left_command"
-              ]
+              "modifiers": ["left_command"]
             }
           ],
           "to_after_key_up": [
@@ -1023,21 +952,14 @@
           "from": {
             "key_code": "r",
             "modifiers": {
-              "mandatory": [
-                "control"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["control"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "z",
-              "modifiers": [
-                "left_command",
-                "left_shift"
-              ]
+              "modifiers": ["left_command", "left_shift"]
             }
           ],
           "to_after_key_up": [
@@ -1094,9 +1016,7 @@
           "from": {
             "any": "key_code",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
@@ -1187,7 +1107,7 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "e"
@@ -1195,9 +1115,7 @@
           "to": [
             {
               "key_code": "right_arrow",
-							"modifiers": [
-								"left_alt"
-							]
+              "modifiers": ["left_alt"]
             }
           ],
           "conditions": [
@@ -1213,7 +1131,7 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "b"
@@ -1221,9 +1139,7 @@
           "to": [
             {
               "key_code": "left_arrow",
-							"modifiers": [
-								"left_alt"
-							]
+              "modifiers": ["left_alt"]
             }
           ],
           "conditions": [
@@ -1239,7 +1155,7 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "x"
@@ -1262,15 +1178,13 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "x",
             "modifiers": {
-							"mandatory": [
-								"shift"
-							]
-						}
+              "mandatory": ["shift"]
+            }
           },
           "to": [
             {
@@ -1290,14 +1204,12 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "v",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -1307,9 +1219,9 @@
                 "value": 1
               }
             },
-						{
-							"shell_command": "echo 'VISUAL' > /Users/hrishi/.config/karabiner/vimium.mode"
-						}
+            {
+              "shell_command": "echo 'VISUAL' > /Users/hrishi/.config/karabiner/vimium.mode"
+            }
           ],
           "conditions": [
             {
@@ -1324,14 +1236,12 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "v",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
@@ -1341,9 +1251,9 @@
                 "value": 0
               }
             },
-						{
-							"shell_command": "echo 'NORMAL' > /Users/hrishi/.config/karabiner/vimium.mode"
-						}
+            {
+              "shell_command": "echo 'NORMAL' > /Users/hrishi/.config/karabiner/vimium.mode"
+            }
           ],
           "conditions": [
             {
@@ -1358,22 +1268,18 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "h",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "left_arrow",
-							"modifiers": [
-								 "shift"
-							]
+              "modifiers": ["shift"]
             }
           ],
           "conditions": [
@@ -1389,22 +1295,18 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "j",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "down_arrow",
-							"modifiers": [
-								 "shift"
-							]
+              "modifiers": ["shift"]
             }
           ],
           "conditions": [
@@ -1420,22 +1322,18 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "k",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "up_arrow",
-							"modifiers": [
-								 "shift"
-							]
+              "modifiers": ["shift"]
             }
           ],
           "conditions": [
@@ -1451,22 +1349,18 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "l",
             "modifiers": {
-              "optional": [
-                "caps_lock"
-              ]
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "right_arrow",
-							"modifiers": [
-								 "shift"
-							]
+              "modifiers": ["shift"]
             }
           ],
           "conditions": [
@@ -1482,25 +1376,19 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "b",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["shift"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "home",
-							"modifiers": [
-								 "shift"
-							]
+              "modifiers": ["shift"]
             }
           ],
           "conditions": [
@@ -1521,20 +1409,14 @@
           "from": {
             "key_code": "e",
             "modifiers": {
-              "mandatory": [
-                "shift"
-              ],
-              "optional": [
-                "caps_lock"
-              ]
+              "mandatory": ["shift"],
+              "optional": ["caps_lock"]
             }
           },
           "to": [
             {
               "key_code": "end",
-							"modifiers": [
-								 "shift"
-							]
+              "modifiers": ["shift"]
             }
           ],
           "conditions": [
@@ -1550,7 +1432,7 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "e"
@@ -1558,10 +1440,7 @@
           "to": [
             {
               "key_code": "right_arrow",
-							"modifiers": [
-								"shift",
-								"left_alt"
-							]
+              "modifiers": ["shift", "left_alt"]
             }
           ],
           "conditions": [
@@ -1577,7 +1456,7 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "b"
@@ -1585,10 +1464,7 @@
           "to": [
             {
               "key_code": "left_arrow",
-							"modifiers": [
-								"shift",
-								"left_alt"
-							]
+              "modifiers": ["shift", "left_alt"]
             }
           ],
           "conditions": [
@@ -1604,7 +1480,7 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "y"
@@ -1612,9 +1488,7 @@
           "to": [
             {
               "key_code": "c",
-							"modifiers": [
-								"left_command"
-							]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -1622,9 +1496,9 @@
                 "value": 0
               }
             },
-						{
-							"shell_command": "echo 'NORMAL' > /Users/hrishi/.config/karabiner/vimium.mode"
-						}
+            {
+              "shell_command": "echo 'NORMAL' > /Users/hrishi/.config/karabiner/vimium.mode"
+            }
           ],
           "conditions": [
             {
@@ -1639,7 +1513,7 @@
             }
           ]
         },
-				{
+        {
           "type": "basic",
           "from": {
             "key_code": "x"
@@ -1647,9 +1521,7 @@
           "to": [
             {
               "key_code": "x",
-							"modifiers": [
-								"left_command"
-							]
+              "modifiers": ["left_command"]
             },
             {
               "set_variable": {
@@ -1657,10 +1529,9 @@
                 "value": 0
               }
             },
-						{
-							"shell_command": "echo 'NORMAL' > /Users/hrishi/.config/karabiner/vimium.mode"
-						}
-
+            {
+              "shell_command": "echo 'NORMAL' > /Users/hrishi/.config/karabiner/vimium.mode"
+            }
           ],
           "conditions": [
             {
@@ -1674,8 +1545,8 @@
               "value": 1
             }
           ]
-				},
-				{
+        },
+        {
           "type": "basic",
           "from": {
             "key_code": "p"
@@ -1683,9 +1554,7 @@
           "to": [
             {
               "key_code": "v",
-							"modifiers": [
-								"left_command"
-							]
+              "modifiers": ["left_command"]
             }
           ],
           "conditions": [
@@ -1695,15 +1564,51 @@
               "value": 1
             }
           ]
-				},
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "semicolon"
+          },
+          "to": [
+            {
+              "key_code": "open_bracket",
+              "modifiers": ["left_control"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vimium",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "quote"
+          },
+          "to": [
+            {
+              "key_code": "close_bracket",
+              "modifiers": ["left_control"]
+            }
+          ],
+          "conditions": [
+            {
+              "type": "variable_if",
+              "name": "vimium",
+              "value": 1
+            }
+          ]
+        },
         {
           "type": "basic",
           "from": {
             "any": "key_code",
             "modifiers": {
-              "optional": [
-                "any"
-              ]
+              "optional": ["any"]
             }
           },
           "to": [
