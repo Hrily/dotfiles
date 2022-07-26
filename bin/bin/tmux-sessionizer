@@ -1,0 +1,7 @@
+init_dir=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
+session_name=$(basename "$init_dir" | tr . _)
+
+tmux new-session -sd $session_name -c $init_dir
+
+return $session_name

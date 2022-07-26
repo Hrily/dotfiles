@@ -1,0 +1,26 @@
+initable=$(find . -maxdepth 3 -name .init-tmux.hrily.sh 2>/dev/null | xargs -n1 dirname)
+
+selected=$(echo "$initable" | fzf)
+
+if [ -z "$selected" ]
+then
+  exit
+fi
+
+session_name=$(basename "$selected" | tr . _)
+
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+  tmux start-server \; \
+    new-session -d -s "$session_name" -c "$selected" # \; \
+    # send-keys -t "$session_name" "sleep 1" Enter
+else
+  tmux new-session -d -s "$session_name" -c "$selected"
+fi
+
+SESSION_NAME=$session_name \
+  INIT_DIR=$selected \
+  $selected/.init-tmux.hrily.sh $session_name
+
+tmux a -t "$session_name"

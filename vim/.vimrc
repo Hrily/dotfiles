@@ -62,8 +62,21 @@ endfun
 nmap E $
 nmap B 0
 
+" Yank till EOL
+nnoremap Y yg$
+" remap next so jumps and adjusts it to center
+nnoremap n nzzzv
+nnoremap N Nzzzv
+" remap J so cursor stays where it was
+nnoremap J mzJ`z
+
+" Undo break points
+for key in [',', '.', '?', '<space>', '!', '{', '}', '(', ')', '<cr>']
+  execute 'inoremap '.key.' '.key.'<C-g>u'
+endfor
+
 " Matching Braces color
-hi MatchParen ctermbg=magenta ctermfg=0
+hi MatchParen ctermbg=0 ctermfg=magenta
 
 " Color Column
 " hi ColorColumn cterm=reverse ctermbg=white ctermfg=8
@@ -232,9 +245,20 @@ endfunction
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 
+" Alternat file
+nnoremap <leader>a <C-^>
+
 " Copy Sourcegraph and Phab links
 nmap <silent> <leader><C-s> :call CopySourceGraphLinkToClipboard()<CR>
 nmap <silent> <leader><C-p> :call CopySourceGraphLinkForPhab()<CR>
+
+" Store swap and backup files in tmp directory
+set backupdir=/tmp//
+set directory=/tmp//
+
+" apparently speeds up vim
+set ttyfast
+set lazyredraw
 
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
@@ -280,50 +304,55 @@ hi link urlTitle notesName
 hi link urlRef notesName
 
 " vim-go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-let g:go_gopls_enabled = 1
-let g:go_gopls_options = ['-remote', 'auto'] " 'unix;/tmp/gopls-daemon']
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-let g:go_referrers_mode = 'gopls'
-let g:go_decls_mode = 'fzf'
-" vim-go syntax highlight
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
-let g:go_highlight_function_calls = 1
-let g:go_auto_type_info = 1
-let g:go_addtags_transform = "snakecase"
-let g:go_bin_path = trim(system('go env GOPATH')) . "/bin"
-" Lint on save
-let g:go_metalinter_autosave = 0
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-" Show Color Column
-au FileType go call EnableCC()
-" Run GoImports
-au FileType go nmap gi :GoImports<CR>
-" GoDeclsDir
-au FileType go nmap gt :GoDeclsDir<CR>
-" GoDoc
-au FileType go nmap g? :GoDoc<CR>
-" Fill Struct
-au FileType go nmap gf :GoFillStruct<CR>
-" Switch to test or code
-au FileType go nmap ga :GoAlternate<CR>
-" Run GoVet
-au FileType go nmap gv :GoVet<CR>
-" Open alternate in new pane
-au FileType go nmap ,a :vsplit<CR> :vertical resize 100<CR> :wincmd w<CR> :GoAlternate<CR>
-" Test current function
-au FileType go nmap ,T :GoTestFunc<CR>
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" let g:go_gopls_enabled = 0
+" let g:go_gopls_options = ['-remote', 'auto'] " 'unix;/tmp/gopls-daemon']
+" " let g:go_def_mode='gopls'
+" " let g:go_info_mode='gopls'
+" " let g:go_referrers_mode = 'gopls'
+" let g:go_decls_mode = 'fzf'
+" " vim-go syntax highlight
+" let g:go_highlight_build_constraints = 1
+" let g:go_highlight_extra_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_functions = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_function_calls = 1
+" let g:go_auto_type_info = 0
+" let g:go_addtags_transform = "snakecase"
+" let g:go_bin_path = trim(system('go env GOPATH')) . "/bin"
+" " Lint on save
+" let g:go_metalinter_autosave = 0
+" let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+" " Don't fmt on save
+" let g:go_fmt_autosave = 1
+" " Show Color Column
+" au FileType go call EnableCC()
+" " Run GoImports
+" au FileType go nmap gi :GoImports<CR>
+" " GoDeclsDir
+" au FileType go nmap gt :GoDeclsDir<CR>
+" " GoDoc
+" au FileType go nmap g? :GoDoc<CR>
+" " Fill Struct
+" au FileType go nmap gf :GoFillStruct<CR>
+" " Switch to test or code
+" au FileType go nmap ga :GoAlternate<CR>
+" " Run GoVet
+" au FileType go nmap gv :GoVet<CR>
+" " Open alternate in new pane
+" au FileType go nmap ,a :vsplit<CR> :vertical resize 100<CR> :wincmd w<CR> :GoAlternate<CR>
+" " Test current function
+" au FileType go nmap ,T :GoTestFunc<CR>
 " Abbreviate iferr to GoIffErr
 au FileType go abbreviate <buffer> iferr <Esc>:GoIfErr<CR>i
 " Bad Spelling
 hi SpellBad ctermbg=none cterm=underline
+" Use K to show documentation in preview window
+nnoremap <silent> K :call CocActionAsync('doHover')<CR>
+
 
 " Generate go tests
 Plug 'hexdigest/gounit-vim'
@@ -331,6 +360,7 @@ Plug 'hexdigest/gounit-vim'
 " Coc vim
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 source ~/.cocvimrc
+nnoremap <leader>oi :call CocAction('runCommand', 'editor.action.organizeImport')<CR>:w<CR>
 
 " Find in Project
 Plug 'rking/ag.vim'
@@ -340,6 +370,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 set fillchars+=stl:\ ,stlnc:\ "
 autocmd VimEnter * AirlineTheme hrishi
+let g:airline#extensions#searchcount#enabled = 0
+let g:airline#extensions#whitespace#enabled = 0
 
 " Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -351,6 +383,12 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 let $FZF_DEFAULT_COMMAND='ag --hidden --ignore={".git","pkg","*.o","*.swp","*.swo","node_modules","vendor"} -g "" -U'
+let $FZF_DEFAULT_OPTS="--preview-window 'right:57%' --preview 'bat --style=numbers --line-range :300 {}'
+  \ --bind ctrl-y:preview-up,ctrl-e:preview-down,
+  \ctrl-b:preview-page-up,ctrl-f:preview-page-down,
+  \ctrl-k:preview-half-page-up,ctrl-j:preview-half-page-down,
+  \shift-up:preview-top,shift-down:preview-bottom,
+  \alt-up:half-page-up,alt-down:half-page-down"
 nmap <leader>p :Files<CR>
 nmap <leader>P :GFiles<CR>
 nmap <leader>f :Files %:h<CR>
@@ -375,9 +413,9 @@ endfun
 au FileType go nmap <leader>p :execute 'Files ' . FindGoProjectRoot()<CR>
 
 " Git gutter
-Plug 'airblade/vim-gitgutter'
-au VimEnter * GitGutterDisable
-nmap ,g :GitGutterToggle<CR>
+" Plug 'airblade/vim-gitgutter'
+" au VimEnter * GitGutterDisable
+" nmap ,g :GitGutterToggle<CR>
 
 " Multiple cursors
 Plug 'terryma/vim-multiple-cursors'
@@ -391,7 +429,7 @@ let g:startify_change_to_dir = 0
 let g:startify_padding_left = 4
 let g:startify_files_number = 10
 hi StartifyHeader ctermfg=lightgreen cterm=italic
-let g:startify_custom_header = ['',''] + map(split(system('cat ~/.vim/vimlogo'), '\n'), '"". v:val') + ['','']
+let g:startify_custom_header = ['',''] + map(split(system('cat ~/.vim/enterpret-logo'), '\n'), '"". v:val') + ['','']
 let g:startify_lists = [
         \ { 'header': ['   MRU '. getcwd()], 'type': 'dir' },
         \ { 'header': ['   MRU'],            'type': 'files' },
@@ -434,8 +472,8 @@ fun! UnmapEscape()
 	silent! tunmap <Esc>
 	silent! tunmap <Esc><Esc>
 endfunction
-autocmd FileType * if &filetype == "floaterm" | call MapEscape()   | endif
-autocmd FileType * if &filetype != "floaterm" | call UnmapEscape() | endif
+" autocmd FileType * if &filetype == "floaterm" | call MapEscape()   | endif
+" autocmd FileType * if &filetype != "floaterm" | call UnmapEscape() | endif
 " nmap <leader>` :FloatermToggle<CR>
 " No numbers in terminal mode
 autocmd FileType * if &filetype == "floaterm" | set nonumber norelativenumber | endif
@@ -464,9 +502,6 @@ Plug 'ledesmablt/vim-run'
 Plug 'szw/vim-maximizer'
 nmap <leader>Z :MaximizerToggle!<CR>
 
-" Colors
-Plug 'ap/vim-css-color'
-
 " Magit
 Plug 'jreybert/vimagit'
 
@@ -477,6 +512,15 @@ Plug 'peitalin/vim-jsx-typescript'
 " nearley syntax highlighting
 " https://nearley.js.org/
 Plug 'tjvr/vim-nearley'
+
+" .editorconfig plugin
+Plug 'editorconfig/editorconfig-vim'
+au FileType go let b:EditorConfig_disable = 1
+
+" nvim plugins
+if !empty(glob("~/.config/nvim/plugs.vim"))
+  source ~/.config/nvim/plugs.vim
+end
 
 " Initialize plugin system
 call plug#end()

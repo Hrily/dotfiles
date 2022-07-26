@@ -1,3 +1,7 @@
+# to profile zsh startup time
+# also uncomment last line with zprof
+# zmodload zsh/zprof
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block, everything else may go below.
@@ -136,9 +140,16 @@ eval $(thefuck --alias)
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias :q="exit"
 alias fcless="fc -e - | less"
-alias v="vim"
-alias vi="vim"
-alias gomodoffvim="GO111MODULE=off vim"
+alias vvim="/usr/local/bin/vim"
+alias v="nvim"
+alias vi="nvim"
+alias vim="nvim"
+alias vmi="nvim"
+alias yaar="yarn"
+
+# lazygit
+export LG_CONFIG_FILE=$HOME/.config/lazygit/config.yml
+alias lz="lazygit"
 
 # Set Locale
 export LC_ALL=en_US.UTF-8
@@ -150,28 +161,6 @@ export TERM="xterm-256color"
 # repeatedly.  The directory in cache-path must be created manually.
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path $HOME/.oh-my-zsh/completion/cache
-
-# nvm related
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
-# export PATH="$NVM_DIR/versions/node/v$(<$NVM_DIR/alias/default)/bin:$PATH"
-# alias nvm="unalias nvm; [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"; nvm $@"
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# yarn v1.9.4
-export PATH="$HOME/yarn/yarn-v1.9.4/bin:$PATH"
-
-# Android Env vars
-# Setup environment variables
-# export JAVA_HOME="$(/usr/libexec/java_home -v1.8)"
-# export ANDROID_HOME=~/android-sdk
-# export ANDROID_NDK=~/android-ndk
-# export ANDROID_NDK_HOME=~/android-ndk
-
-# Add env vars to PATH
-export PATH=$JAVA_HOME/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$PATH
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -199,5 +188,21 @@ bindkey '^[OB' history-beginning-search-forward-end
 bindkey -M vicmd 'k' history-beginning-search-backward-end
 bindkey -M vicmd 'j' history-beginning-search-forward-end
 
+# nvm related
+# NOTE: Don't modify PATH after this
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"
+# export PATH="$NVM_DIR/versions/node/v$(<$NVM_DIR/alias/default)/bin:$PATH"
+# alias nvm="unalias nvm; [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"; nvm $@"
+export NVM_DIR="$HOME/.nvm"
+load_nvm() {
+  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+  [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
+(load_nvm &)
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# end of profiling
+# zprof
