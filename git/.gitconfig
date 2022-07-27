@@ -1,0 +1,16 @@
+[user]
+	name = Hrishikesh Hiraskar
+	email = hrishi@enterpret.com
+[core]
+	excludesfile = ~/.global_gitignore
+[pull]
+	ff = only
+[split-diffs]
+	min-line-width = 40
+	syntax-highlighting-theme = github-dark
+	theme-name = dark
+[github]
+	user = hrily
+[delta]
+  features = side-by-side line-numbers decorations
+  side-by-side = true

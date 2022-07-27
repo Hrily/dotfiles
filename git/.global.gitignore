@@ -1,0 +1,6 @@
+# vim swap files
+*~
+*.sw?
+
+# tmux init scipts
+.init-tmux.hrily.sh
