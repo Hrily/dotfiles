@@ -2,7 +2,7 @@
 	name = Hrishikesh Hiraskar
 	email = hrishi@enterpret.com
 [core]
-	excludesfile = ~/.global_gitignore
+	excludesfile = ~/.global.gitignore
 [pull]
 	ff = only
 [split-diffs]
