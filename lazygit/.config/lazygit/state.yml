@@ -1,0 +1,19 @@
+lastupdatecheck: 1636622466
+recentrepos:
+- /Users/hrishi/git/dotfiles
+- /Users/hrishi/monorepo
+- /Users/hrishi/git/enterpret-showcase
+- /Users/hrishi/git/go-emailthreads
+- /Users/hrishi/git/eql-parser.ts
+- /Users/hrishi/git/lazygit
+- /Users/hrishi/git/algotrading
+- /Users/hrishi/git/go-little-os
+- /Users/hrishi/git/gocci
+- /Users/hrishi/git/qmk_firmware
+- /Users/hrishi/git/fe-experiment
+- /Users/hrishi/git/grpc-go
+startuppopupversion: 5
+customcommandshistory:
+- gh pr create
+- gh pr merge -sd
+hidecommandlog: false

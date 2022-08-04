@@ -149,6 +149,7 @@ alias yaar="yarn"
 
 # lazygit
 export LG_CONFIG_FILE=$HOME/.config/lazygit/config.yml
+alias lazygit="CONFIG_DIR=\"$HOME/.config/lazygit\" lazygit"
 alias lz="lazygit"
 
 # Set Locale

@@ -1,0 +1,8 @@
+git:
+  paging:
+    colorArg: never
+    # pager: delta --dark --paging=never
+    pager: git-split-diffs --color=16m
+
+gui:
+  showCommandLog: false
