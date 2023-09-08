@@ -200,9 +200,6 @@ function MyTabLine()
 	return s
 endfunction
 
-" Use system go tools for go-monrepo
-let $USE_SYSTEM_GO=1
-
 " Support backspace
 set backspace=indent,eol,start
 
@@ -219,8 +216,6 @@ autocmd BufWritePre * :call <SID>StripTrailingWhitespacesFn()
 
 " Show whitespaces as characters
 set listchars=eol:¬,tab:\¦\ ,trail:~,extends:>,precedes:<,space:·
-hi SpecialKey ctermfg=8
-hi NonText    ctermfg=8
 
 " Hex Edit
 augroup Binary
@@ -260,6 +255,13 @@ set directory=/tmp//
 set ttyfast
 set lazyredraw
 
+" Automatic vim plug installation
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
 " Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -292,6 +294,8 @@ let g:notes_directories = [
 	\]
 " Notes suffix
 let g:notes_suffix = '.txt'
+" Disable tab to indent
+let g:notes_tab_indents = 0
 " Folded text color
 hi Folded ctermfg=darkgray ctermbg=233
 " Embeded syntblack color
@@ -303,57 +307,6 @@ syn region urlRef matchgroup=mkdDelimiter start="(" end=")" oneline conceal cont
 hi link urlTitle notesName
 hi link urlRef notesName
 
-" vim-go
-" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" let g:go_gopls_enabled = 0
-" let g:go_gopls_options = ['-remote', 'auto'] " 'unix;/tmp/gopls-daemon']
-" " let g:go_def_mode='gopls'
-" " let g:go_info_mode='gopls'
-" " let g:go_referrers_mode = 'gopls'
-" let g:go_decls_mode = 'fzf'
-" " vim-go syntax highlight
-" let g:go_highlight_build_constraints = 1
-" let g:go_highlight_extra_types = 1
-" let g:go_highlight_fields = 1
-" let g:go_highlight_functions = 1
-" let g:go_highlight_methods = 1
-" let g:go_highlight_structs = 1
-" let g:go_highlight_types = 1
-" let g:go_highlight_function_calls = 1
-" let g:go_auto_type_info = 0
-" let g:go_addtags_transform = "snakecase"
-" let g:go_bin_path = trim(system('go env GOPATH')) . "/bin"
-" " Lint on save
-" let g:go_metalinter_autosave = 0
-" let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-" " Don't fmt on save
-" let g:go_fmt_autosave = 1
-" " Show Color Column
-" au FileType go call EnableCC()
-" " Run GoImports
-" au FileType go nmap gi :GoImports<CR>
-" " GoDeclsDir
-" au FileType go nmap gt :GoDeclsDir<CR>
-" " GoDoc
-" au FileType go nmap g? :GoDoc<CR>
-" " Fill Struct
-" au FileType go nmap gf :GoFillStruct<CR>
-" " Switch to test or code
-" au FileType go nmap ga :GoAlternate<CR>
-" " Run GoVet
-" au FileType go nmap gv :GoVet<CR>
-" " Open alternate in new pane
-" au FileType go nmap ,a :vsplit<CR> :vertical resize 100<CR> :wincmd w<CR> :GoAlternate<CR>
-" " Test current function
-" au FileType go nmap ,T :GoTestFunc<CR>
-" Abbreviate iferr to GoIffErr
-au FileType go abbreviate <buffer> iferr <Esc>:GoIfErr<CR>i
-" Bad Spelling
-hi SpellBad ctermbg=none cterm=underline
-" Use K to show documentation in preview window
-nnoremap <silent> K :call CocActionAsync('doHover')<CR>
-
-
 " Generate go tests
 Plug 'hexdigest/gounit-vim'
 
@@ -361,9 +314,6 @@ Plug 'hexdigest/gounit-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 source ~/.cocvimrc
 nnoremap <leader>oi :call CocAction('runCommand', 'editor.action.organizeImport')<CR>:w<CR>
-
-" Find in Project
-Plug 'rking/ag.vim'
 
 " Status Line
 Plug 'vim-airline/vim-airline'
@@ -382,7 +332,7 @@ Plug 'junegunn/goyo.vim'
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_COMMAND='ag --hidden --ignore={".git","pkg","*.o","*.swp","*.swo","node_modules","vendor"} -g "" -U'
+let $FZF_DEFAULT_COMMAND='ag --hidden --ignore={".git","pkg","*.o","*.swp","*.swo","node_modules","vendor"} -g "" -U -f'
 let $FZF_DEFAULT_OPTS="--preview-window 'right:57%' --preview 'bat --style=numbers --line-range :300 {}'
   \ --bind ctrl-y:preview-up,ctrl-e:preview-down,
   \ctrl-b:preview-page-up,ctrl-f:preview-page-down,
@@ -412,14 +362,6 @@ fun! FindGoProjectRoot()
 endfun
 au FileType go nmap <leader>p :execute 'Files ' . FindGoProjectRoot()<CR>
 
-" Git gutter
-" Plug 'airblade/vim-gitgutter'
-" au VimEnter * GitGutterDisable
-" nmap ,g :GitGutterToggle<CR>
-
-" Multiple cursors
-Plug 'terryma/vim-multiple-cursors'
-
 " Comments
 Plug 'tpope/vim-commentary'
 
@@ -437,10 +379,6 @@ let g:startify_lists = [
         \ { 'header': ['   Commits'],        'type': function('s:list_commits') },
         \ ]
 nmap ,o :Startify<CR>
-
-" Vim Dispatch
-Plug 'tpope/vim-dispatch'
-nmap <silent> ,G :Start gazelle; terminal-notifier -sound "default" -title "Gazelle Complete" -message `if [[ $? -eq 0 ]]; then echo "✅ Gazelle completed successfully"; else echo "❌ Gazelle Failed"; fi;`<CR>
 
 " Filetype icons
 Plug 'ryanoasis/vim-devicons'
@@ -496,18 +434,13 @@ nmap s <Plug>(easymotion-overwin-f)
 " map  <Leader>w <Plug>(easymotion-bd-w)
 " nmap <Leader>w <Plug>(easymotion-overwin-w)
 
-Plug 'ledesmablt/vim-run'
-
 " maxmize one buffer/pane
 Plug 'szw/vim-maximizer'
 nmap <leader>Z :MaximizerToggle!<CR>
 
-" Magit
-Plug 'jreybert/vimagit'
-
 " .tsx and .jsx syntax highlight
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+" Plug 'leafgarland/typescript-vim'
+" Plug 'peitalin/vim-jsx-typescript'
 
 " nearley syntax highlighting
 " https://nearley.js.org/
@@ -516,6 +449,9 @@ Plug 'tjvr/vim-nearley'
 " .editorconfig plugin
 Plug 'editorconfig/editorconfig-vim'
 au FileType go let b:EditorConfig_disable = 1
+
+" shows total number of search occurences even >99
+Plug 'google/vim-searchindex'
 
 " nvim plugins
 if !empty(glob("~/.config/nvim/plugs.vim"))
@@ -528,6 +464,10 @@ call plug#end()
 " Comment Colors
 hi Comment cterm=italic ctermfg=8
 
+" Indent colors
+hi IntentChars ctermfg=white
+match IntentChars /^ \+/
+
 " Color column
 match OverLength /\%81v./
 
@@ -537,3 +477,4 @@ match ExtraWhitespace /\s\+$/
 
 " Hide ~ in sign column for empty lines
 hi NonText ctermfg=0
+hi SpecialKey ctermfg=8

@@ -127,7 +127,7 @@ setopt noEXTENDED_GLOB
 # fi
 
 # The Fuck
-alias python="python3"
+alias python=$(pyenv which python)
 eval $(thefuck --alias)
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -202,8 +202,15 @@ load_nvm() {
 }
 (load_nvm &)
 
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # end of profiling
 # zprof
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"

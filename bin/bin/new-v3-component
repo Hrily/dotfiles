@@ -1,0 +1,20 @@
+name=$1
+
+cwd=$(basename `pwd`)
+if [[ "$cwd" != "components" ]]; then
+  echo "Please run in components folder"
+  exit 1
+fi
+
+mkdir -p "$name"
+
+cat <<EOF > "$name"/"$name".tsx
+export const $name = () => {
+  // TODO: implement
+  return <>$name</>
+}
+EOF
+
+cat <<EOF > "$name"/index.tsx
+export { $name } from './$name'
+EOF

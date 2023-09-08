@@ -329,7 +329,8 @@
           },
           "to": [
             {
-              "key_code": "home"
+              "key_code": "a",
+              "modifiers": ["left_control"]
             }
           ],
           "conditions": [
@@ -356,7 +357,8 @@
           },
           "to": [
             {
-              "key_code": "end"
+              "key_code": "e",
+              "modifiers": ["left_control"]
             }
           ],
           "conditions": [
@@ -869,60 +871,6 @@
         {
           "type": "basic",
           "from": {
-            "key_code": "t",
-            "modifiers": {
-              "optional": ["caps_lock"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "t",
-              "modifiers": ["left_command"]
-            }
-          ],
-          "to_after_key_up": [
-            {
-              "key_code": "vk_none"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "variable_if",
-              "name": "vimium",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
-            "key_code": "r",
-            "modifiers": {
-              "optional": ["caps_lock"]
-            }
-          },
-          "to": [
-            {
-              "key_code": "r",
-              "modifiers": ["left_command"]
-            }
-          ],
-          "to_after_key_up": [
-            {
-              "key_code": "vk_none"
-            }
-          ],
-          "conditions": [
-            {
-              "type": "variable_if",
-              "name": "vimium",
-              "value": 1
-            }
-          ]
-        },
-        {
-          "type": "basic",
-          "from": {
             "key_code": "u",
             "modifiers": {
               "optional": ["caps_lock"]
@@ -1387,8 +1335,8 @@
           },
           "to": [
             {
-              "key_code": "home",
-              "modifiers": ["shift"]
+              "key_code": "a",
+              "modifiers": ["shift", "left_control"]
             }
           ],
           "conditions": [
@@ -1415,8 +1363,8 @@
           },
           "to": [
             {
-              "key_code": "end",
-              "modifiers": ["shift"]
+              "key_code": "e",
+              "modifiers": ["shift", "left_control"]
             }
           ],
           "conditions": [
@@ -1572,7 +1520,7 @@
           },
           "to": [
             {
-              "key_code": "open_bracket",
+              "key_code": "left_arrow",
               "modifiers": ["left_control"]
             }
           ],
@@ -1591,7 +1539,7 @@
           },
           "to": [
             {
-              "key_code": "close_bracket",
+              "key_code": "right_arrow",
               "modifiers": ["left_control"]
             }
           ],

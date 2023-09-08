@@ -1,36 +1,35 @@
 {
-  "title": "Ctrl+CapsLock as CapsLock",
+  "title": "RightCtrl+Esc as tilde",
   "rules": [
     {
-      "description": "Use Ctrl+CapsLock as CapsLock",
+      "description": "Use RightCtrl+Esc as tilde",
       "manipulators": [
         {
           "type": "basic",
           "from": {
-            "key_code": "caps_lock",
+            "key_code": "escape",
             "modifiers": {
-              "mandatory": ["right_control"],
-              "optional": ["caps_lock"]
+              "mandatory": ["right_control"]
             }
           },
           "to": [
             {
-              "key_code": "caps_lock"
+              "key_code": "grave_accent_and_tilde"
             }
           ]
         },
         {
           "type": "basic",
           "from": {
-            "key_code": "caps_lock",
+            "key_code": "escape",
             "modifiers": {
-              "mandatory": ["left_control"],
-              "optional": ["caps_lock"]
+              "mandatory": ["shift", "right_control"]
             }
           },
           "to": [
             {
-              "key_code": "caps_lock"
+              "key_code": "grave_accent_and_tilde",
+              "modifiers": ["shift"]
             }
           ]
         }

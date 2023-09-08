@@ -1,0 +1,1 @@
+vim +'silent pu!+' +'$d' +'1' +'au BufWriteCmd vimclippy %y+ | set nomodified' vimclippy

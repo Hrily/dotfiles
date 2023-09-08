@@ -1,16 +1,24 @@
 lastupdatecheck: 1636622466
 recentrepos:
 - /Users/hrishi/git/dotfiles
-- /Users/hrishi/monorepo
 - /Users/hrishi/git/enterpret-showcase
-- /Users/hrishi/git/go-emailthreads
+- /Users/hrishi/monorepo
+- /Users/hrishi/git/browser-tools-service
+- /Users/hrishi/git/Comicify.ai
+- /Users/hrishi/git/ml-monorepo
+- /Users/hrishi/git/clienterpret
+- /Users/hrishi/git/go-typechat
+- /Users/hrishi/git/IDL-Central-Repository
+- /Users/hrishi/git/TypeChat
 - /Users/hrishi/git/eql-parser.ts
+- /Users/hrishi/git/file-previewer
+- /Users/hrishi/git/label-studio
+- /Users/hrishi/git/go-emailthreads
 - /Users/hrishi/git/lazygit
 - /Users/hrishi/git/algotrading
 - /Users/hrishi/git/go-little-os
 - /Users/hrishi/git/gocci
 - /Users/hrishi/git/qmk_firmware
-- /Users/hrishi/git/fe-experiment
 - /Users/hrishi/git/grpc-go
 startuppopupversion: 5
 customcommandshistory:
