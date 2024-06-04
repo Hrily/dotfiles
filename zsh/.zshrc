@@ -145,7 +145,9 @@ alias v="nvim"
 alias vi="nvim"
 alias vim="nvim"
 alias vmi="nvim"
+alias lvim="XDG_CONFIG_HOME=~/.config/lazyvim nvim"
 alias yaar="yarn"
+alias clear="clear;clear;"
 
 # lazygit
 export LG_CONFIG_FILE=$HOME/.config/lazygit/config.yml

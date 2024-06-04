@@ -1,0 +1,1 @@
+stdsym | fzf | sed 's/[.]/#/' | awk '{print "https://pkg.go.dev/" $1}' | xargs open -a Arc

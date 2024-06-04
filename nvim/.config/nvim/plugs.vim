@@ -17,4 +17,17 @@ if has('nvim') && !exists('g:vscode')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-pack/nvim-spectre'
   nnoremap <leader>S <cmd>lua require('spectre').open()<CR>
+
+  " nvim ipynb
+  " Sauce: https://www.maxwellrules.com/misc/nvim_jupyter.html
+  Plug 'hkupty/iron.nvim'
+  Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-line'
+  Plug 'GCBallesteros/vim-textobj-hydrogen'
+  Plug 'GCBallesteros/jupytext.vim'
+
+  " copilot chat
+  Plug 'zbirenbaum/copilot.lua'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 endif

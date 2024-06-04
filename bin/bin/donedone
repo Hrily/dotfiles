@@ -1,1 +1,1 @@
-terminal-notifier -message "It is done..." -title Done
+terminal-notifier -message "It is done..." -title ✅ -sender com.apple.Terminal -sound default

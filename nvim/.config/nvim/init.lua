@@ -2,6 +2,7 @@
 local config_path = vim.fn.stdpath('config')
 
 vim.cmd('source ' .. config_path .. '/vim_init.vim')
+vim.cmd('source ' .. config_path .. '/golang.vim')
 vim.cmd('source ' .. config_path .. '/lazygit.vim')
 
 -- https://sourcegraph.com/github.com/ledesmablt/vim-run/-/blob/plugin/run.vim?L44
@@ -93,3 +94,24 @@ require('fine-cmdline').setup({
 })
 
 require('madglow')
+
+require("iron.core").setup({
+  config = {
+    should_map_plug = false,
+    scratch_repl = true,
+    repl_definition = {
+      python = {
+        command = { "ipython" },
+        format = require("iron.fts.common").bracketed_paste,
+      },
+    },
+  },
+  keymaps = {
+    send_motion = "ctr",
+    visual_send = "ctr",
+  },
+})
+
+require("CopilotChat").setup {
+  debug = true, -- Enable debugging
+}

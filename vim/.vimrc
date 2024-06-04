@@ -332,7 +332,7 @@ Plug 'junegunn/goyo.vim'
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-let $FZF_DEFAULT_COMMAND='ag --hidden --ignore={".git","pkg","*.o","*.swp","*.swo","node_modules","vendor"} -g "" -U -f'
+let $FZF_DEFAULT_COMMAND='ag --hidden --ignore={".git","pkg","*.o","*.swp","*.swo","node_modules","vendor","*.pyc","__pycache__"} -g "" -U -f'
 let $FZF_DEFAULT_OPTS="--preview-window 'right:57%' --preview 'bat --style=numbers --line-range :300 {}'
   \ --bind ctrl-y:preview-up,ctrl-e:preview-down,
   \ctrl-b:preview-page-up,ctrl-f:preview-page-down,

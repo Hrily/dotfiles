@@ -3,14 +3,20 @@ recentrepos:
 - /Users/hrishi/git/dotfiles
 - /Users/hrishi/git/enterpret-showcase
 - /Users/hrishi/monorepo
-- /Users/hrishi/git/browser-tools-service
-- /Users/hrishi/git/Comicify.ai
 - /Users/hrishi/git/ml-monorepo
 - /Users/hrishi/git/clienterpret
+- /Users/hrishi/git/browser-tools-service
+- /Users/hrishi/git/eql-parser.ts
+- /Users/hrishi/git/gamedev/physicssim
+- /Users/hrishi/git/publickeys
+- /Users/hrishi/git/fiber
+- /Users/hrishi/git/bubbletea
+- /Users/hrishi/git/grpc-go
+- /Users/hrishi/scratch/streampoc/example-ws-api
+- /Users/hrishi/git/Comicify.ai
 - /Users/hrishi/git/go-typechat
 - /Users/hrishi/git/IDL-Central-Repository
 - /Users/hrishi/git/TypeChat
-- /Users/hrishi/git/eql-parser.ts
 - /Users/hrishi/git/file-previewer
 - /Users/hrishi/git/label-studio
 - /Users/hrishi/git/go-emailthreads
@@ -19,9 +25,9 @@ recentrepos:
 - /Users/hrishi/git/go-little-os
 - /Users/hrishi/git/gocci
 - /Users/hrishi/git/qmk_firmware
-- /Users/hrishi/git/grpc-go
 startuppopupversion: 5
 customcommandshistory:
 - gh pr create
 - gh pr merge -sd
+- q
 hidecommandlog: false
