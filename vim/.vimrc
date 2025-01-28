@@ -14,6 +14,7 @@ set number
 set relativenumber
 set tabstop=2
 set shiftwidth=2
+set notermguicolors
 
 " Scroll offset
 set scrolloff=6
@@ -239,9 +240,6 @@ endfunction
 " Command mode navigation, enable Option <- & ->
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
-
-" Alternat file
-nnoremap <leader>a <C-^>
 
 " Copy Sourcegraph and Phab links
 nmap <silent> <leader><C-s> :call CopySourceGraphLinkToClipboard()<CR>

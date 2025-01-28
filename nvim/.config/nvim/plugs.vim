@@ -30,4 +30,10 @@ if has('nvim') && !exists('g:vscode')
   Plug 'zbirenbaum/copilot.lua'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
+
+  " ollama gen
+  Plug 'David-Kunz/gen.nvim'
+  nmap <leader>a <cmd>Gen<CR>
+  vmap <leader>a <cmd>Gen<CR>
+  nmap <leader>A <cmd>%Gen<CR>
 endif

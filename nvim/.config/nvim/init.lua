@@ -115,3 +115,7 @@ require("iron.core").setup({
 require("CopilotChat").setup {
   debug = true, -- Enable debugging
 }
+
+require('gen').setup({
+  display_mode = 'horizontal-split',
+})
