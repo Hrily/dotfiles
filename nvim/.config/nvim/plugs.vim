@@ -1,6 +1,6 @@
 if has('nvim') && !exists('g:vscode')
   " Treesitter syntax highlighting
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter'
   Plug 'nvim-treesitter/nvim-treesitter-context'
   hi TreesitterContext cterm=italic
   Plug 'nvim-treesitter/playground'
@@ -29,11 +29,33 @@ if has('nvim') && !exists('g:vscode')
   " copilot chat
   Plug 'zbirenbaum/copilot.lua'
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 
   " ollama gen
   Plug 'David-Kunz/gen.nvim'
-  nmap <leader>a <cmd>Gen<CR>
-  vmap <leader>a <cmd>Gen<CR>
-  nmap <leader>A <cmd>%Gen<CR>
+  nmap <leader>l <cmd>Gen<CR>
+  vmap <leader>l <cmd>Gen<CR>
+  nmap <leader>L <cmd>%Gen<CR>
+
+  " avante.nvim
+  Plug 'stevearc/dressing.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'MunifTanjim/nui.nvim'
+  Plug 'yetone/avante.nvim', { 'branch': 'main', 'do': 'make' }
+
+  " zk
+  Plug 'zk-org/zk-nvim'
+  autocmd FileType markdown nnoremap <leader>b :ZkBacklinks<CR>
+  autocmd FileType markdown nnoremap <leader>t :ZkTags<CR>
+
+  " Dependencies
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+
+  " Actual Plugin
+  Plug 'Al0den/notion.nvim'
+
+  " OpenCode
+  Plug 'folke/snacks.nvim'
+  Plug 'NickvanDyke/opencode.nvim'
+
 endif

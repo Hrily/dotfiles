@@ -95,16 +95,23 @@ require('fine-cmdline').setup({
 
 require('madglow')
 
+local view = require("iron.view")
 require("iron.core").setup({
   config = {
     should_map_plug = false,
     scratch_repl = true,
     repl_definition = {
+      sh = {
+        -- Can be a table or a function that
+        -- returns a table (see below)
+        command = {"zsh"}
+      },
       python = {
         command = { "ipython" },
         format = require("iron.fts.common").bracketed_paste,
       },
     },
+    repl_open_cmd = view.bottom(40),
   },
   keymaps = {
     send_motion = "ctr",
@@ -112,10 +119,54 @@ require("iron.core").setup({
   },
 })
 
-require("CopilotChat").setup {
-  debug = true, -- Enable debugging
-}
-
 require('gen').setup({
   display_mode = 'horizontal-split',
 })
+
+require('avante_lib').load()
+
+require('avante').setup({
+  providers = {
+    mistral = {
+      __inherited_from = "openai",
+      api_key_name = "",
+      endpoint = "http://127.0.0.1:11434/v1",
+      model = "mistral",
+    },
+    deepseek = {
+      __inherited_from = "openai",
+      api_key_name = "",
+      endpoint = "http://127.0.0.1:11434/v1",
+      model = "deepseek-r1",
+    }
+  },
+  mappings = {
+    submit = {
+      normal = "<CR>",
+      insert = "<CR>",
+    },
+  },
+})
+
+require("zk").setup({
+  -- can be "telescope", "fzf", "fzf_lua", "minipick", or "select" (`vim.ui.select`)
+  -- it's recommended to use "telescope", "fzf", "fzf_lua", or "minipick"
+  picker = "select",
+
+  lsp = {
+    -- `config` is passed to `vim.lsp.start_client(config)`
+    config = {
+      cmd = { "zk", "lsp" },
+      name = "zk",
+      -- on_attach = ...
+      -- etc, see `:h vim.lsp.start_client()`
+    },
+
+    -- automatically attach buffers in a zk notebook that match the given filetypes
+    auto_attach = {
+      enabled = false,
+    },
+  },
+})
+
+require("notion").setup()

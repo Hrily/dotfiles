@@ -15,4 +15,12 @@ if [ "${#sessions[@]}" -eq "1" ]; then
 	exit
 fi
 
-tmux a -t $(tmux ls | fzf --height 40% | cut -d ":" -f 1)
+session=$(tmux ls | fzf --height 40% | cut -d ":" -f 1)
+
+if [ -n "$TMUX" ]; then
+  # Inside tmux, switch client to the session
+  tmux switch-client -t "$session"
+else
+  # Outside tmux, attach to the session
+  tmux attach -t "$session"
+fi

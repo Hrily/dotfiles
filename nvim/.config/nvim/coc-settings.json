@@ -6,6 +6,12 @@
       "args": ["-remote", "auto"],
       "rootPatterns": [".vim/", ".git/", ".hg/", "go.mod"],
       "filetypes": ["go"]
+    },
+    "zk": {
+      "command": "zk",
+      "args": ["lsp"],
+      "rootPatterns": [".zk/"],
+      "filetypes": ["markdown"]
     }
   },
   "go.disable": {

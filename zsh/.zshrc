@@ -90,7 +90,7 @@ SPACESHIP_USER_SHOW="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting web-search)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -216,3 +216,21 @@ eval "$(pyenv init -)"
 # zprof
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+source "${HOME}/.secrets.sh"
+
+export ZK_NOTEBOOK_DIR="${HOME}/git/notes"
+
+export AWS_REGION=us-east-2
+export AWS_PAGER=cat
+
+. "$HOME/.local/bin/env"
+
+# Source NPCSH configuration
+if [ -f ~/.npcshrc ]; then
+    . ~/.npcshrc
+fi
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/hrishi/.lmstudio/bin"
+# End of LM Studio CLI section

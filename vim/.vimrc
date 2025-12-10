@@ -451,6 +451,14 @@ au FileType go let b:EditorConfig_disable = 1
 " shows total number of search occurences even >99
 Plug 'google/vim-searchindex'
 
+" Git Gutter
+Plug 'airblade/vim-gitgutter'
+highlight GitGutterAdd     ctermbg=none ctermfg=2
+highlight GitGutterChange  ctermbg=none ctermfg=3
+highlight GitGutterDelete  ctermbg=none ctermfg=1
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
 " nvim plugins
 if !empty(glob("~/.config/nvim/plugs.vim"))
   source ~/.config/nvim/plugs.vim
@@ -476,3 +484,6 @@ match ExtraWhitespace /\s\+$/
 " Hide ~ in sign column for empty lines
 hi NonText ctermfg=0
 hi SpecialKey ctermfg=8
+
+" Set Autoread
+nmap <silent> <leader>l :set autoread<CR>
