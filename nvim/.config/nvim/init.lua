@@ -1,4 +1,6 @@
 ---@diagnostic disable: undefined-global
+vim.o.exrc = true
+
 local config_path = vim.fn.stdpath('config')
 
 vim.cmd('source ' .. config_path .. '/vim_init.vim')
@@ -170,3 +172,86 @@ require("zk").setup({
 })
 
 require("notion").setup()
+
+require('render-markdown').setup({
+  sign = {
+    enabled = false,
+  },
+  code = {
+    inline_pad = 1,
+    left_pad = 2,
+    language_pad = 2,
+    highlight_language = 'RenderMarkdownCodeLanguage',
+  },
+  heading = {
+    width = 'block',
+    position = 'inline',
+    icons = { ' ', '## ', '### ', '#### ', '###### ', '###### ' },
+    right_pad = 1,
+  },
+  bullet = {
+    icons = { '•', '⚬', '•', '•' },
+  },
+  quote = {
+    icon = '▏'
+  },
+  link = {
+    enabled = true,
+    hyperlink = '',
+    custom = {
+      web = { pattern = '.*', icon = '', highlight = 'markdownLinkText' },
+    },
+  },
+})
+
+-- Override render-markdown link highlights
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.api.nvim_set_hl(0, "@_label.markdown_inline", {
+      ctermfg = 12,
+      fg = "blue",
+      underline = false,
+      undercurl = false,
+      underdouble = false,
+      underdotted = false,
+      underdashed = false,
+    })
+    vim.api.nvim_set_hl(0, "@_label", {
+      ctermfg = 12,
+      fg = "blue",
+      underline = false,
+      undercurl = false,
+      underdouble = false,
+      underdotted = false,
+      underdashed = false,
+    })
+  end,
+})
+
+-- Also try to override immediately
+vim.api.nvim_set_hl(0, "@_label.markdown_inline", {
+  ctermfg = 12,
+  fg = "blue",
+  underline = false,
+  undercurl = false,
+  underdouble = false,
+  underdotted = false,
+  underdashed = false,
+})
+vim.api.nvim_set_hl(0, "@_label", {
+  ctermfg = 12,
+  fg = "blue",
+  underline = false,
+  undercurl = false,
+  underdouble = false,
+  underdotted = false,
+  underdashed = false,
+})
+
+
+require("lspconfig")
+require('OllamaCopilot').setup({
+  model = 'qwen3',
+  filetypes = {'go'}
+})

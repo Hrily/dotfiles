@@ -5,8 +5,8 @@ if has('nvim') && !exists('g:vscode')
   hi TreesitterContext cterm=italic
   Plug 'nvim-treesitter/playground'
 
-  " Github Copilot
-  Plug 'github/copilot.vim'
+  " " Github Copilot
+  " Plug 'github/copilot.vim'
 
   " Comamnd Bar
   Plug 'MunifTanjim/nui.nvim'
@@ -25,10 +25,6 @@ if has('nvim') && !exists('g:vscode')
   Plug 'kana/vim-textobj-line'
   Plug 'GCBallesteros/vim-textobj-hydrogen'
   Plug 'GCBallesteros/jupytext.vim'
-
-  " copilot chat
-  Plug 'zbirenbaum/copilot.lua'
-  Plug 'nvim-lua/plenary.nvim'
 
   " ollama gen
   Plug 'David-Kunz/gen.nvim'
@@ -57,5 +53,12 @@ if has('nvim') && !exists('g:vscode')
   " OpenCode
   Plug 'folke/snacks.nvim'
   Plug 'NickvanDyke/opencode.nvim'
+
+  " Better markdown
+  Plug 'MeanderingProgrammer/render-markdown.nvim'
+
+  " Ollama Copilot
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'Jacob411/Ollama-Copilot'
 
 endif

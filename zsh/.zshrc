@@ -126,10 +126,6 @@ setopt noEXTENDED_GLOB
 # 	export EDITOR='vim'
 # fi
 
-# The Fuck
-alias python=$(pyenv which python)
-eval $(thefuck --alias)
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -148,11 +144,17 @@ alias vmi="nvim"
 alias lvim="XDG_CONFIG_HOME=~/.config/lazyvim nvim"
 alias yaar="yarn"
 alias clear="clear;clear;"
+alias wma="workmux add"
+alias wmr="workmux rm"
 
 # lazygit
 export LG_CONFIG_FILE=$HOME/.config/lazygit/config.yml
 alias lazygit="CONFIG_DIR=\"$HOME/.config/lazygit\" lazygit"
 alias lz="lazygit"
+
+# claude
+unalias gau
+alias gaude="claude --dangerously-skip-permissions"
 
 # Set Locale
 export LC_ALL=en_US.UTF-8
@@ -226,11 +228,4 @@ export AWS_PAGER=cat
 
 . "$HOME/.local/bin/env"
 
-# Source NPCSH configuration
-if [ -f ~/.npcshrc ]; then
-    . ~/.npcshrc
-fi
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/hrishi/.lmstudio/bin"
 # End of LM Studio CLI section
