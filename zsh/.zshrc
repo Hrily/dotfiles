@@ -159,8 +159,11 @@ alias gaude="claude --dangerously-skip-permissions"
 # Set Locale
 export LC_ALL=en_US.UTF-8
 
-# For tmux to have same colors as normal zsh
-export TERM="xterm-256color"
+# Force xterm-256color only outside tmux; inside tmux let default-terminal
+# (tmux-256color) win so the TUI renders correctly.
+if [ -z "$TMUX" ]; then
+  export TERM="xterm-256color"
+fi
 
 # This way the completion script does not have to parse Bazel's options
 # repeatedly.  The directory in cache-path must be created manually.
