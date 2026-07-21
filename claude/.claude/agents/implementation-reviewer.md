@@ -19,6 +19,10 @@ against the task spec and the codebase's conventions, not personal taste.
   races, deadlocks, resource leaks.
 - **Security**: input validation, injection, authz/authn, secrets, unsafe defaults.
 - **Contract adherence**: honors the interface/data/event contracts? backward-compatible?
+- **Project rules**: does the diff honor the repo's `.claude/rules/*.md` (layer conventions,
+  shared-lib reuse, error handling, API/proto contracts, tenant scoping, code craft)? Read the
+  rules matching the changed files' globs — don't assume they loaded, you're reviewing a
+  `git diff`. Blocking for layer/contract/correctness rules; nit for style/craft.
 - **Complexity & readability**: reason in *cognitive* complexity — how hard the code is to
   follow — not cyclomatic (which only measures testing effort). Nesting is the main driver;
   flag arrow-shaped code (deep `if`/loop stacking, ~>3 levels), long multi-clause boolean
