@@ -1,2 +1,4 @@
 .DS_Store
 nvim/.config/nvim/.claude
+claude/.claude/hooks/*.log
+claude/.claude/hooks/__pycache__/

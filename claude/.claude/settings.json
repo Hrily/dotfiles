@@ -1,0 +1,112 @@
+{
+  "hooks": {
+    "Notification": [
+      {
+        "matcher": "permission_prompt|elicitation_dialog",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status waiting"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status working"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status done"
+          },
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /home/ubuntu/.claude/hooks/adhd-gate.py",
+            "timeout": 10
+          },
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /home/ubuntu/.claude/hooks/ste-meter.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "workmux set-window-status working"
+          },
+          {
+            "type": "command",
+            "command": "/home/ubuntu/.claude/hooks/adhd-reminder.sh UserPromptSubmit",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "/usr/bin/python3 /home/ubuntu/.claude/hooks/ste-card.py",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/ubuntu/.claude/hooks/adhd-reminder.sh SessionStart",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "i-have-adhd@i-have-adhd": true,
+    "ponytail@ponytail": true
+  },
+  "extraKnownMarketplaces": {
+    "i-have-adhd": {
+      "source": {
+        "source": "directory",
+        "path": "/home/ubuntu/git/i-have-adhd"
+      }
+    },
+    "enterpret-skills": {
+      "source": {
+        "source": "directory",
+        "path": "/home/ubuntu/git/enterpret-skills"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "DietrichGebert/ponytail"
+      }
+    }
+  },
+  "outputStyle": "default",
+  "effortLevel": "medium",
+  "tui": "default",
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "auto",
+  "editorMode": "vim",
+  "agentPushNotifEnabled": true,
+  "env": {
+    "CLAUDE_CODE_TMPDIR": "/mnt/scratch/claude-tmp",
+    "CLAUDE_CODE_FORK_SUBAGENT": "0"
+  }
+}
