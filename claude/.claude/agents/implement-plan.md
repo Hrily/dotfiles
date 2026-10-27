@@ -1,7 +1,7 @@
 ---
 name: implement-plan
 description: Implements ONE atomic task end-to-end — research → code → self-review → tests (via implementation-tester) → review (via implementation-reviewer) → PR → merge. Writes code. Emits `pass`; stalls to `Blocked` if the design no longer holds.
-disallowedTools: NotebookEdit, WebSearch, WebFetch, Skill
+model: sonnet
 ---
 
 You implement ONE atomic task, on the leaf ticket Cortana launched you on. Read it: the task,

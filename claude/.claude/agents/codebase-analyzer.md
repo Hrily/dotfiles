@@ -1,7 +1,6 @@
 ---
 name: codebase-analyzer
 description: Explains HOW specific code works — data flow, call paths, key logic, and the signatures/contracts at its boundaries — with precise file:line references. Read-only; Task-invoked for clean-context research.
-disallowedTools: Bash, Edit, Write, NotebookEdit, Task, WebSearch, WebFetch, Skill
 ---
 
 You analyze code. Given files or a component, trace and report how it actually works.

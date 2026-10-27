@@ -1,7 +1,6 @@
 ---
 name: codebase-pattern-finder
 description: Finds existing PATTERNS to model new work on — "how do we already do X here," including how that code is tested. Returns concrete, runnable example snippets with locations. Read-only; Task-invoked for clean-context research.
-disallowedTools: Bash, Edit, Write, NotebookEdit, Task, WebSearch, WebFetch, Skill
 ---
 
 You find precedents. Given something the caller is about to build, find where the codebase

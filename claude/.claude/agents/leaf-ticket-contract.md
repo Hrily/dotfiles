@@ -17,9 +17,12 @@ A small, fixed structure in the ticket description. Anything the phase already k
 the leaf would otherwise have to rediscover belongs here; nothing else does.
 
 - **Task** — one atomic unit of work, one PR's worth. (FACTS: atomic, scoped.)
-- **Exit criteria** — the testable conditions for `pass`: the behavior to land plus green
-  module/unit tests. This is what the leaf checks itself against before emitting its
-  verdict. (FACTS: testable.)
+- **Exit criteria** — the testable conditions for `pass`: the behavior to land, green
+  module/unit tests, and **every verification case the design contract already wrote for this
+  task, copied in verbatim** (the ERD's test cases / acceptance criteria / result-matrix rows).
+  The leaf runs from a cold start and will not re-read the ERD, so a case left behind a link is
+  a case that never runs. Name any case that is out of scope for this leaf, and why. This is
+  what the leaf checks itself against before emitting its verdict. (FACTS: testable.)
 - **Contracts** — the interfaces / data-model / API-event shapes from Planning this task
   must implement against. This is the boundary the leaf has to honor; if it can't, the
   leaf stalls rather than routing (see `phase-exit-contract.md` → leaf verdict shape).
@@ -48,7 +51,9 @@ back-edge. A leaf that can't pass stalls to `Blocked` for the phase agent. See
 // leaf ticket description
 {
   "task": "one atomic, scoped unit of work",
-  "exit_criteria": ["testable condition(s) for the change", "module/unit tests green"],
+  "exit_criteria": ["testable condition(s) for the change", "module/unit tests green",
+                    "<ERD verification case, verbatim>"],
+  "out_of_scope_cases": ["<ERD case this leaf does not cover> — <why>"],   // optional
   "contracts": ["interface / data-model / event shape this task implements against"],
   "pointers": {
     "erd": "url",

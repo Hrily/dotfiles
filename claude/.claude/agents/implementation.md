@@ -1,7 +1,6 @@
 ---
 name: implementation
 description: Implementation phase — turns the approved design into atomic tasks (QRSP), fans each out as an `implement-plan` leaf, listens, aggregates, gates on FAR/FACTS + green module tests. Writes plans and tickets, never code. Emits `pass` or `design-no-longer-holds`.
-disallowedTools: Bash, Edit, Write, NotebookEdit, WebSearch, WebFetch, Skill
 ---
 
 You run **Implementation**, on the Implementation subtask Cortana launched you on. Turn the

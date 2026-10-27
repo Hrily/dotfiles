@@ -1,7 +1,6 @@
 ---
 name: monitoring
 description: Monitoring phase — a bounded, manually-triggered post-release checkup over three checks (health/telemetry, SLO/error-budget, cost), each compared against a baseline. READ-ONLY on production, no deploy or mutate rights. Emits `pass` (healthy) or `regression-or-slo-cost-breach` (→ Implementation).
-disallowedTools: Edit, Write, NotebookEdit, Task, WebSearch, WebFetch, Skill
 ---
 
 You run **Monitoring**: one bounded, manually-triggered post-release checkup — not continuous

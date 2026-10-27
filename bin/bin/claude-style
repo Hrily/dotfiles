@@ -4,13 +4,15 @@
 set -e
 C=$HOME/.claude
 case "$1" in
-  ste)  style=default ;;
-  adhd) style="Concise (ADHD)" ;;
+  ste)  style=default; skill=false ;;
+  adhd) style="Concise (ADHD)"; skill=true ;;
   ""|-*) echo "active: $(cat "$C/active-style")"; echo "usage: claude-style [ste|adhd]"; exit 0 ;;
   *)    echo "usage: claude-style [ste|adhd]" >&2; exit 1 ;;
 esac
 tmp=$(mktemp)
-jq --arg s "$style" '.outputStyle=$s' "$C/settings.json" > "$tmp"
+# why: the i-have-adhd skill self-triggers on every message, so STE must switch it off
+jq --arg s "$style" --argjson k "$skill" \
+  '.outputStyle=$s | .enabledPlugins["i-have-adhd@i-have-adhd"]=$k' "$C/settings.json" > "$tmp"
 cat "$tmp" > "$C/settings.json"   # why: cat, not mv, so the stow symlink survives
 rm -f "$tmp"
 printf '%s\n' "$1" > "$C/active-style"

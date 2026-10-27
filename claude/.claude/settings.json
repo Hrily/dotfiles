@@ -1,4 +1,10 @@
 {
+  "env": {
+    "CLAUDE_CODE_FORK_SUBAGENT": "0",
+    "CLAUDE_CODE_TMPDIR": "/mnt/scratch/claude-tmp",
+    "PUPPETEER_CACHE_DIR": "/mnt/scratch/puppeteer"
+  },
+  "model": "opus",
   "hooks": {
     "Notification": [
       {
@@ -17,6 +23,18 @@
           {
             "type": "command",
             "command": "workmux set-window-status working"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear|compact",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/ubuntu/.claude/hooks/adhd-reminder.sh SessionStart",
+            "timeout": 5
           }
         ]
       }
@@ -60,35 +78,23 @@
           }
         ]
       }
-    ],
-    "SessionStart": [
-      {
-        "matcher": "startup|resume|clear|compact",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/home/ubuntu/.claude/hooks/adhd-reminder.sh SessionStart",
-            "timeout": 5
-          }
-        ]
-      }
     ]
   },
   "enabledPlugins": {
-    "i-have-adhd@i-have-adhd": true,
+    "i-have-adhd@i-have-adhd": false,
     "ponytail@ponytail": true
   },
   "extraKnownMarketplaces": {
-    "i-have-adhd": {
-      "source": {
-        "source": "directory",
-        "path": "/home/ubuntu/git/i-have-adhd"
-      }
-    },
     "enterpret-skills": {
       "source": {
         "source": "directory",
         "path": "/home/ubuntu/git/enterpret-skills"
+      }
+    },
+    "i-have-adhd": {
+      "source": {
+        "source": "directory",
+        "path": "/home/ubuntu/git/i-have-adhd"
       }
     },
     "ponytail": {
@@ -100,13 +106,10 @@
   },
   "outputStyle": "default",
   "effortLevel": "medium",
+  "autoCompactWindow": 400000,
   "tui": "default",
   "skipDangerousModePermissionPrompt": true,
   "theme": "auto",
   "editorMode": "vim",
-  "agentPushNotifEnabled": true,
-  "env": {
-    "CLAUDE_CODE_TMPDIR": "/mnt/scratch/claude-tmp",
-    "CLAUDE_CODE_FORK_SUBAGENT": "0"
-  }
+  "agentPushNotifEnabled": true
 }
